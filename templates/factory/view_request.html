@@ -1,0 +1,65 @@
+
+{% extends 'factory/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+<br>
+
+<br><br><br><br><br>
+<center><h2 style="align:center">Request View</h2></center>
+
+
+<div class="container" style=" ;
+
+padding: 20px;width: 1200px; height: 800px; background-image: url({% static 'img/webp/r3.jpg' %});
+ ">
+
+           
+  
+ <table class="table table-bordered table-striped table-hover" style="width: 1100px; "  text-align="center">
+
+
+<th class="info" style="background-color: White;">Panchayath Name</th>&nbsp
+<th class="info" style="background-color: white;">Waste type</th>&nbsp
+<th class="info" style="background-color: white;">Rate</th>&nbsp
+<th class="info" style="background-color: white;">Status</th>&nbsp
+
+<th class="info" style="background-color: white;">Pay</th>&nbsp
+
+
+
+{% for dri in sh  %}
+
+<tr>
+  <td style="color: white;"><b>{{ dri.waste.panchayath.user.first_name}}</td>
+  {% comment %} <td>{{ dri.contractor.user.first_name}}</td> {% endcomment %}
+  <td style="color: white;"><b>{{ dri.waste.type}}</td>
+
+  <td style="color: white;"><b>{{ dri.rate}}</td>
+  <td style="color: white;"><b>{{ dri.status}}</td>
+  {% comment %} <td><img style="max-width:200px;max-height:140px;" src="/media/{{ dri.image}}"></td> {% endcomment %}
+  {% if dri.payment == 'paid' %}
+  <td style="color: white;">{{dri.payment}}</td>
+  {% elif dri.status == 'accepted' %}
+  <td ><a href="Payment?id={{ dri.id}}" class=" btn btn-danger" style="background-color: white;">Pay</a></td>
+  {% endif %}
+  {% comment %} <td><a href="s_reject?id={{ dri.user_id}}" class=" btn btn-success " style="background-color: pink;">Reject</a></td> {% endcomment %}
+  
+{% endfor %}
+</table>
+
+</div>
+
+<br><br><br><br><br> <br><br><br><br><br>
+  <br><br><br><br><br>
+  {% endblock %}

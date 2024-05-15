@@ -1,0 +1,153 @@
+
+{% extends 'user/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+<br>
+
+<br><br><br><br><br><br><br>
+
+
+
+<div class="w-100 overflow-hidden bg-gray-100" id="top">
+
+  <div class="container position-relative">
+    <div class="col-20 col-lg-6 mt-0 h-100 position-absolute top-0 end-0 bg-cover" data-aos="fade-left"
+      style="background-image: url({% static 'img/webp/r21.jpg' %});">
+
+    </div>                  
+    
+    
+   
+
+
+
+
+    <div class="row">
+      <div class="col-lg-8 py-vh-8 position-relative" data-aos="fade-right">
+        <h1 style="align:center">Add Waste</h1>
+        <br>
+
+        <div class="col-12 col-lg-8 text-center">
+          <div class="row">
+            <div class="grouped-inputs border bg-light p-2">
+              <div class="row">
+                <div class="col">
+                  <br>
+                  <div class="container position-relative">
+                    <form method="post" action="">
+                      {% csrf_token %}
+                   
+                      <select type="text" name="wid" class="form-control" placeholder="category">
+                        <option value="">Select Ward</option>
+                        {% for i in p %}
+                        <option value="{{i.id}}">{{i.ward}}</option>
+                        {% endfor %}
+      
+                     
+                    </select><br>
+                    <select type="text" name="type" class="form-control" placeholder="category">
+                      <option value="">Select the Type of Plastic</option>
+                      
+                      <option value="Containers">Containers</option>
+                      <option value="Cover">Cover</option>
+                      <option value="Bottles">Bottles</option>
+                      <option value="PVC">PVC</option>
+                      <option value="Thermocol">Thermocol</option>
+                      <option value="Others">Others</option>
+                   
+                  </select><br>
+                    <!-- <input type="text" name="type" class="form-control p-3" placeholder="Type of waste" required> -->
+      
+                
+                    <input type="text" name="kilo" class="form-control p-3" placeholder="Quantity in kilogram" required>
+      
+      
+      <br> <div class="form-group">    
+          <input type="submit" value="Add" class="btn btn-primary">
+        </div>
+      
+                  </form>
+                </div>
+               
+              </div>
+            </div>
+      
+          </div>
+        </div>
+
+
+        
+      </div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} 
+
+<div class="container">
+
+<div class="col-12 col-lg-8 text-center">
+    <div class="row">
+      <div class="grouped-inputs border bg-light p-2">    
+        <div class="row">
+          <div class="col">
+            <h1 style="align:center">Add Waste</h1>
+            <form method="post" action="">
+                {% csrf_token %}
+             
+                <select type="text" name="wid" class="form-control" placeholder="category">
+                  <option value="Select Ward">Select Ward</option>
+                  {% for i in p %}
+                  <option value="{{i.id}}">{{i.ward}}</option>
+                  {% endfor %}
+
+                 
+              </select><br>
+              <input type="text" name="type" class="form-control p-3" placeholder="Type of plastic waste" required>
+
+              <br>
+              <input type="text" name="kilo" class="form-control p-3" placeholder="Quantity in kilogram" required>
+
+
+<br> <div class="form-group">    
+    <input type="submit" value="Login" class="btn btn-primary">
+  </div>
+
+            </form>
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> {% endcomment %}
+
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  {% endblock %}

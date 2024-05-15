@@ -1,0 +1,58 @@
+
+{% extends 'user/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<br><br>
+<br>
+<br>
+<br>
+
+
+<section style="background-color: #eee;" >
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-4">
+          <div class="card text-black">
+            <img src="{{single_view.image.url}}" class="card-img-top" alt="Apple Computer" />
+            <div class="card-body">
+              <div class="text-center">
+                <h5 class="card-title">{{single_view.name}}</h5>
+                <p class="text-muted mb-4">Description : {{ single_view.description }}</p>
+              </div>
+              <div>
+                <div class="d-flex justify-content-between">
+                  <span>Factory Name</span><span>{{ single_view.factory.user.first_name }}</span>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Price</span><span>{{ single_view.price }}</span>
+              </div>
+              <br>
+              <form action="addcart" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ single_view.id }}" class="span1" placeholder=""/>
+                <input type="hidden" name="price" value="{{ single_view.price }}" class="span1" placeholder=""/>
+                <div class="d-flex justify-content-between">
+                <span>Quantity </span><span><input style="width:75px;" id="form1" min="1" name="quantity" value="1" type="number" class="form-control form-control-sm" />
+                </span>
+                </div>
+                <button type="submit" class="btn btn-primary "style="background-color:#00001a;" >ADD To Wishlist</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}

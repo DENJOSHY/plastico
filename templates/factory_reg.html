@@ -1,0 +1,89 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+<br>
+
+<br><br><br>
+<div class="w-100 overflow-hidden bg-gray-100" id="top">
+
+  <div class="container position-relative">
+    <div class="col-12 col-lg-7 mt-0 h-100 position-absolute top-0 end-0 bg-cover" data-aos="fade-left"
+      style="background-image: url({% static 'img/webp/interior11.webp' %});">
+
+    </div>
+    <div class="row">
+
+      <div class="col-lg-7 py-vh-6 position-relative" data-aos="fade-right">
+       
+        <div class="col-12 col-lg-8 text-center">
+          <h1 style="align:center">Factory Registeration</h1>
+<br>
+          <div class="row">
+            <div class="grouped-inputs border bg-light p-2">
+              <div class="row">
+                <div class="col">
+                  <br>
+                  <form method="post" enctype="multipart/form-data" action="f_reg"> 
+                      {% csrf_token %}
+                      <input type="text"  name="fname" class="form-control p-3"  placeholder="Factory Name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"  required>
+                    <br>
+                    
+                    <input type="text" class="form-control p-3" name="faddress" placeholder = 'Enter Factory Location' required ></input><br>
+      
+                    <input type="text"  name="oname" class="form-control p-3"  placeholder="Owner Name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"  required>
+                    <br>
+                    <input type="email" name="email" class="form-control p-3" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" required>
+                
+                    <br>
+                    <input type="tel" class="form-control p-3"  name="phone" placeholder="Phone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact Number'" pattern="[6-9]{1}[0-9]{9}" title="Enter 10 digit number"required>
+                    <br>
+                    <input class="form-control p-3" name="oaddress" placeholder = 'Enter Owner Location' required ></input><br>
+                    <label >Upload Licence</label>
+                    <input type="file" class="form-control p-3" name="img" placeholder="Upload Licence" required>
+                 
+                    <br>
+                    <input type="password" class="form-control p-3"  name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" pattern = "[0-9]).{1,}[a-z]).{1,}[A-Z]).{8,}" title="Eight or more characters" required >
+      
+      <br> <div class="form-group">
+          <input type="submit" value="Registration" class="btn btn-primary">
+        </div>
+      
+                  </form>
+                </div>
+               
+              </div>
+            </div>
+      
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+<div class="container">
+
+
+</div>
+
+  <br><br><br><br><br>
+  {% endblock %}

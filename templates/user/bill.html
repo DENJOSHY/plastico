@@ -1,0 +1,106 @@
+{% extends 'user/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+<br><br><br><br>
+{% comment %} style="background-image: url('{% static  'img/webp/b1.jpg' %}');"  #00001a{% endcomment %}
+<section class="p-4 p-md-5" data-stellar-background-ratio="0.5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10 col-lg-5 col-xl-5" >
+          <div class="card rounded-5" >
+            <div class="card-body p-4" style="border:20px" >
+              <div class="text-center mb-4">
+                <h1>Billing Form</h1>
+              </div>
+
+
+                <!-- Pills content -->
+                <div class="tab-content">
+                <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                <form action="" method="post">
+                    {% csrf_token %}
+                <div class="text-center mb-3">
+                    <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-primary btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                    </button>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" id="loginName" name="name"  required="" class="form-control"  placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" autocomplete="off" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" required>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="email" name="email" class="form-control" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" required>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" name="phone" class="form-control" placeholder="Phone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact Number'" pattern="[6-9]{1}[0-9]{9}" title="Enter 10 digit number"required>
+                    </div>
+
+                <div class="form-outline mb-4">
+                    <textarea name="address" id="" cols="10" rows="5" class="form-control" placeholder="Address" required></textarea>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <p>Total Amount = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                        <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"/>
+                        </svg>{{asz}}</p>
+                    </div>
+
+                <!-- 2 column grid layout -->
+                <div class="row mb-4">
+                    <div class="col-md-6 d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    <!-- <div class="form-check mb-3 mb-md-0">
+                        <input class="form-check-input" type="checkbox" value="" id="loginCheck"  />
+                        <label class="form-check-label" for="loginCheck"> Confirm Billing </label>
+                    </div> -->
+                    </div>
+                </div>
+
+                <!-- Submit button -->
+                <a href="{% url 'payment' %}" input type="submit" value="pay" class="btn btn-primary">pay</a>
+            </form>
+
+                <!-- Register buttons -->
+                
+                <div class="text-center">
+                    <p>Make Payment Later ? <a href="viewcart">Click Here</a></p>
+                </div></a>
+               
+                </div>
+                </div>
+</section>
+
+<script>
+    function validateInput() {
+        var input = document.getElementById('myInput');
+        if (input.value.trim() !== input.value) {
+            alert('Leading white space is not allowed!');
+            input.value = input.value.trim(); // Remove leading white space
+            input.focus(); // Set focus back to the input field
+        }
+    }
+  </script>
+
+  {% endblock %}

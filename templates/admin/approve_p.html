@@ -1,0 +1,66 @@
+
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+<br>
+
+<br><br><br><br><br>
+<center><h2 style="align:center">List of Registered Panchayath</h2></center>
+
+
+<div class="container add-emp">
+
+ <table class="table table-bordered table-striped table-hover" style="width: 1150px">
+
+  <thead height="50px" style="background-color:#00001a; color:white;">
+    <tr>
+
+<th class="info" >Panchayath Name</th>&nbsp
+<th class="info" >Contact No</th>&nbsp
+<th class="info" >Email</th>&nbsp
+<th class="info" >Location</th>&nbsp
+
+
+<th class="info" >Approve</th>&nbsp
+<th class="info" >Reject</th>&nbsp
+
+</tr>
+</thead>
+
+{% for dri in app_ps  %}
+
+<tr>
+  <td>{{ dri.user.first_name}}</td>
+  {% comment %} <td>{{ dri.contractor.user.first_name}}</td> {% endcomment %}
+  <td>{{ dri.mobile}}</td>
+
+  <td>{{ dri.user.email}}</td>
+  <td>{{ dri.address}}</td>
+  {% comment %} <td><img style="max-width:200px;max-height:140px;" src="/media/{{ dri.image}}"></td> {% endcomment %}
+
+  <td><a href="s_approve?id={{ dri.user_id}}" class=" btn btn-danger" style="background-color: lightgreen;">Approve</a></td>
+  <td><a href="s_reject?id={{ dri.user_id}}" class=" btn btn-success " style="background-color: pink;">Reject</a></td>
+  
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+
+  <br><br><br><br><br>
+  {% endblock %}

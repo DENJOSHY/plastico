@@ -1,0 +1,165 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+  <main>
+    <div class="w-100 overflow-hidden bg-gray-100" id="top">
+
+      <div class="container position-relative">
+        <div class="col-12 col-lg-8 mt-0 h-100 position-absolute top-0 end-0 bg-cover" data-aos="fade-left"
+          style="background-image: url({% static 'img/webp/r3.jpg' %});">
+
+        </div>
+        <div class="row">
+
+          <div class="col-lg-6 py-vh-6 position-relative" data-aos="fade-right">
+            <h2 class="display-2 fw-bold mt-2">Recycling turns things into other things. Which is like MAGIC.</h2>
+            {% comment %} <p class="lead">To be honest, this isjust a stupid placeholder text. We don´t know how to sell anything,
+              not even lesser or slower as you.</p> {% endcomment %}
+            {% comment %} <a href="#" class="btn btn-dark btn-xl shadow me-3 rounded-0 my-5">Get started free</a> {% endcomment %}
+          </div>
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+{% comment %}     
+    <div class="py-vh-4 bg-gray-100 w-100 overflow-hidden" id="aboutus">
+      <div class="container">
+
+        <div class="row d-flex justify-content-between align-items-center">
+          <div class="col-lg-6">
+            <div class="row gx-5 d-flex">
+              <div class="col-md-11">
+                <div class="shadow ratio ratio-16x9 rounded bg-cover bp-center align-self-end" data-aos="fade-right"
+                  style="background-image: url({% static 'img/webp/people15.webp' %});--bs-aspect-ratio: 50%;">
+                </div>
+              </div>
+              <div class="col-md-5 offset-md-1">
+                <div class="shadow ratio ratio-1x1 rounded bg-cover mt-5 bp-center float-end" data-aos="fade-up"
+                  style="background-image: url({% static 'img/webp/interior42.webp' %});">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="col-12 shadow ratio rounded bg-cover mt-5 bp-center" data-aos="fade-left"
+                  style="background-image: url({% static 'img/webp/people4.webp' %});--bs-aspect-ratio: 150%;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <h3 class="py-5 border-top border-dark" data-aos="fade-left">We did some interesting stuff in our field of
+              work. For example we collect a lot of these free photos and use them on our website.</h3>
+            <p data-aos="fade-left" data-aos-delay="200">Donec id elit non mi porta gravida at eget metus. Fusce
+              dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet
+              risus.
+            </p>
+            <p>
+              <a href="#" class="link-fancy link-dark" data-aos="fade-left" data-aos-delay="400">Learn more
+              </a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div> {% endcomment %}
+{% comment %} 
+    <div class="py-vh-5 w-100 overflow-hidden" id="numbers">
+      <div class="container">
+        <div class="row d-flex justify-content-between align-items-center">
+          <div class="col-lg-5">
+            <h3 class="py-5 border-top border-dark" data-aos="fade-right">Our magic numbers</h3>
+          </div>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="display-6 mb-5" data-aos="fade-down">There are some important numbers for us. They are just
+                  numbers without any meaning, but we just love them.</h2>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up">
+                <div class="display-1 fw-bold py-4">42%</div>
+                <p class="text-black-50">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac
+                  cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
+                  sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up">
+                <div class="display-1 fw-bold py-4">+300</div>
+                <p class="text-black-50">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac
+                  cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
+                  sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div> {% endcomment %}
+    <br>   <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="position-relative overflow-hidden w-100 bg-light" id="gallery">
+      <div class="container-fluid">
+        <div class="row overflow-scroll">
+          <div class="col-12">
+            <div class="row vw-100 px-0 py-vh-5 d-flex align-items-center scrollx">
+              <div class="col-md-2" data-aos="fade-up">
+                <img src="{% static 'img/webp/r2.jpg' %}" class="rounded shadow img-fluid" alt="nice gallery image"
+                  width="512" height="341">
+              </div>
+
+              
+              <div class="col-md-2" data-aos="fade-up" data-aos-delay="200">
+                <img src="{% static 'img/webp/r3.jpg' %}" class="img-fluid rounded shadow" alt="nice gallery image" width="1164"
+                  height="1000">
+              </div>
+
+              <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                <img src="{% static 'img/webp/r18.jpg' %}" class="img-fluid rounded shadow" alt="nice gallery image" width="844"
+                  height="1054">
+              </div>
+
+              <div class="col-md-3" data-aos="fade-up" data-aos-delay="600">
+                <img src="{% static 'img/webp/r20.png' %}" class="img-fluid rounded shadow" alt="nice gallery image"
+                  width="844" height="562">
+              </div>
+
+              <div class="col-md-2" data-aos="fade-up" data-aos-delay="800">
+                <img src="{% static 'img/webp/rp1.jpg' %}" class="rounded shadow img-fluid" alt="nice gallery image" width="512"
+                  height="341">
+              </div>
+              
+              {% comment %} <div class="col-md-2" data-aos="fade-up" data-aos-delay="1000">
+                <img src="{% static 'img/webp/rp1.jpg' %}" class="rounded shadow img-fluid" alt="nice gallery image" width="600"
+                  height="341">
+              </div> {% endcomment %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    
+ 
+  </main>
+
+
+
+  {% endblock %}

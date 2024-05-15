@@ -1,0 +1,52 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<br><br><br><br>
+<div class="container add-emp">		
+    <center><h1 style="color:black;"><strong>Booking Details</strong></h1><br></center>
+    <table class="table table-bordered table-hover"  width="1150px">
+        <thead height="30px" style="background-color:#00001a; color:white;">
+            <tr>			
+                <th class="p-3 mb-2 bg-danger text-light">User Name </th>
+                <th class="p-3 mb-2 bg-danger text-light">Product Name</th>
+                <th class="p-3 mb-2 bg-danger text-light">Factory Name</th>
+
+                <th class="p-3 mb-2 bg-danger text-light">Price</th>
+                <th class="p-3 mb-2 bg-danger text-light">Description </th>
+                <th class="p-3 mb-2 bg-danger text-light">Image</th>
+                <th class="p-3 mb-2 bg-danger text-light">Quantity</th>
+                <th class="p-3 mb-2 bg-danger text-light">Total Amount</th>
+                <th class="p-3 mb-2 bg-danger text-light">Payment Status</th>
+                
+            </tr> 
+        </thead>
+            {% for i in carr %}
+            <tr>
+                    <td>{{i.user.first_name}}</td>
+                    <td>{{i.product.name}}</td>
+                    <td>{{i.product.factory.user.first_name}}</td>
+
+                    <td>{{i.product.price}}</td>
+                    <td>{{i.product.description}}</td>
+                    <td><img style="max-width: 200px;max-height:140px;" src="/media/{{ i.product.image }}"></td> 
+                    <td>{{i.quantity}}</td>
+                    <td>{{i.total}}</td>
+                    <td>{{i.payment}}</td>
+                    
+
+            </tr>  
+            {% endfor %}
+
+    </table>
+</div>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+
+{% endblock %}

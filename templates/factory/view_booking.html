@@ -1,0 +1,74 @@
+{% extends 'factory/base.html' %}
+{% load static %}
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+<br><br><br><br>
+<div class="container add-emp">		
+    <center><h1 style="color:black;"><strong>Booking Details</strong></h1><br></center>
+    <table class="table table-bordered table-hover"  width="1150px">
+        <thead height="50px" style="background-color:#00001a; color:white;">
+            <tr>			
+                <th class="p-3 mb-2 bg-danger text-light">User Name </th>
+                <th class="p-3 mb-2 bg-danger text-light">Product Name</th>
+                <th class="p-3 mb-2 bg-danger text-light">Price</th>
+                <th class="p-3 mb-2 bg-danger text-light">Description </th>
+                <th class="p-3 mb-2 bg-danger text-light">Image</th>
+                <th class="p-3 mb-2 bg-danger text-light">Quantity</th>
+                <th class="p-3 mb-2 bg-danger text-light">Total Amount</th>
+                <th class="p-3 mb-2 bg-danger text-light">Payment Status</th>
+                <th class="p-3 mb-2 bg-danger text-light">Delivery Status</th>
+
+                
+            </tr> 
+        </thead>
+            
+            {% for i in carr %}
+            <tr>
+                    <td>{{i.user.first_name}}</td>
+                    <td>{{i.product.name}}</td>
+                    <td>{{i.product.price}}</td>
+                    <td>{{i.product.description}}</td>
+                    <td><img style="max-width: 200px;max-height:140px;" src="/media/{{ i.product.image }}"></td> 
+                    <td>{{i.quantity}}</td>
+                    <td>{{i.total}}</td>
+                    <td>{{i.payment}}</td>
+                    
+                    {% if i.delivery == 'Order Delivered' %}
+                     <td>{{i.delivery}}</td> 
+                    {% else %}
+                    <td>  <form action="Addtrack" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-12">
+                            <select type="text" name="track" class="form-control" placeholder="category">
+                                {% comment %} <option value="Order Confirm">Order Confirm</option> {% endcomment %}
+                                <option value="Order Packed">Order Packed</option>
+                                <option value="Order Shipped">Order Shipped</option>
+                                <option value="Order Deliver Today">Order Deliver Today</option>
+                                <option value="Order Delivered">Order Delivered</option>
+                            </select>
+                            <br>
+                            <input type="hidden" name="id" value={{i.id}}>
+                        </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary " type="submit" style="width=1px">Update Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+                {% endif %}
+
+            </tr>  
+            {% endfor %}
+
+    </table>
+</div>
+<br><br><br><br><br><br><br>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+<br>
+
+<br><br><br><br><br>
+<center><h2 style="align:center">List of Factory</h2></center>
+
+
+
+<div class="container add-emp">		
+   
+  
+ <table class="table table-bordered table-striped table-hover" style="width: 1150px">
+
+  <thead height="50px" style="background-color:#00001a; color:white;">
+    <tr>
+
+        <th class="info" >Factory Name</th>&nbsp
+        <th class="info" >Location</th>&nbsp
+        <th class="info" >Owner Name</th>&nbsp
+        <th class="info" >Email</th>&nbsp
+        <th class="info" >Contact</th>&nbsp
+        <th class="info" >Owner Address</th>&nbsp
+        <th class="info" >Factory Licence</th>&nbsp
+
+    </tr>
+  </thead>
+  <tr></tr>
+{% for dri in fact  %}
+
+<tr>
+    <td>{{ dri.user.first_name}}</td>&nbsp
+    &nbsp<td>{{ dri.faddress}}</td>&nbsp
+    <td>{{ dri.oname}}</td>&nbsp
+    <td>{{ dri.user.email}}</td>&nbsp
+    <td>{{ dri.mobile}}</td>&nbsp
+  
+    <td>{{ dri.oaddress}}</td>&nbsp
+  
+    <td><img style="max-width:200px;max-height:140px;" src="{{ dri.licence.url}}"></td>&nbsp
+  {% comment %} <td><img style="max-width:200px;max-height:140px;" src="/media/{{ dri.image}}"></td> {% endcomment %}
+
+  
+
+</tr>
+
+{% endfor %}
+
+</table>
+</div>
+
+
+  <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br>
+  {% endblock %}

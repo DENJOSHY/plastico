@@ -1,0 +1,71 @@
+
+{% extends 'user/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+<br>
+
+<br><br><br><br><br><br><br>
+
+
+
+<center><h2 style="align:center">List of Added Waste</h2></center>
+
+
+<div class="container" style=" ;
+
+padding: 30px;width: 900px; background-image: url({% static 'img/webp/r21.jpg' %});">
+
+           
+  
+ <table class="table table-bordered table-striped table-hover" style="width: 800px">
+
+
+<th class="info" style="background-color: gray;">Type of plastic waste</th>&nbsp
+<th class="info" style="background-color: gray;">Weight</th>&nbsp
+<th class="info" style="background-color: gray;"  >Status</th>&nbsp
+
+
+{% for dri in p  %}
+
+<tr>
+  <td style="color:black"><b>{{ dri.type}}</b></td>
+  {% comment %} <td>{{ dri.contractor.user.first_name}}</td> {% endcomment %}
+  <td style="color:black"><b>{{ dri.kilo}}</b></td>
+
+  <td style="color:blblack"><b>{{ dri.status}}</b></td>
+  {% comment %} <td>{{ dri.address}}</td> {% endcomment %}
+  {% comment %} <td><img style="max-width:200px;max-height:140px;" src="/media/{{ dri.image}}"></td> {% endcomment %}
+
+  {% comment %} <td><a href="s_approve?id={{ dri.user_id}}" class=" btn btn-danger" style="background-color: lightgreen;">Approve</a></td> {% endcomment %}
+  {% comment %} <td><a href="s_reject?id={{ dri.user_id}}" class=" btn btn-success " style="background-color: pink;">Reject</a></td> {% endcomment %}
+  
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+
+
+
+
+
+
+
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  {% endblock %}

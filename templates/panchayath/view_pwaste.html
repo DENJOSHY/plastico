@@ -1,0 +1,77 @@
+
+{% extends 'panchayath/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+<br>
+
+<br><br>
+
+
+
+<center><h2 style="align:center">List of Added Waste</h2></center>
+
+
+<div class="container" style=" ;
+
+padding: 30px;width:1250px;  background-image: url({% static 'img/webp/r3.jpg' %});">
+
+           
+  
+ <table class="table table-bordered table-striped table-hover" style="width: 1100px ">
+  
+
+<th class="info" style="background-color: white;">Type of waste</th>&nbsp
+<th class="info" style="background-color: white;">Weight</th>&nbsp
+<th class="info" style="background-color: white;"  >Status</th>&nbsp
+<th class="info" style="background-color: white;"  >Request</th>&nbsp
+
+
+
+{% for dri in p  %}
+
+<tr>
+  {% comment %} <td style="color:black"><b>{{ dri.reg.user.first_name}}</b></td>
+  <td style="color:black"><b>{{ dri.location}}</b></td>
+  <td style="color:black"><b>{{ dri.reg.address}}</b></td>
+  <td style="color:black"><b>{{ dri.reg.mobile}}</b></td> {% endcomment %}
+  <td style="color:white"><b><strong>{{ dri.type}}</strong></b></td>
+  <td style="color:white"><b><strong>{{ dri.kilo}}</strong></b></td>
+
+  <td style="color:white"><b><strong>{{ dri.status}}</strong></b></td>
+  {% comment %} <td>{{ dri.address}}</td> {% endcomment %}
+  {% comment %} <td><img style="max-width:200px;max-height:140px;" src="/media/{{ dri.image}}"></td> {% endcomment %}
+
+  {% comment %} <td><a href="s_approve?id={{ dri.user_id}}" class=" btn btn-danger" style="background-color: lightgreen;">Approve</a></td> {% endcomment %}
+  {% if dri.status == 'not collected' %}
+  <td><a href="Viewrequest?id={{ dri.id}}" class=" btn btn-success " style="background-color: white;">Request</a></td>
+  {% endif %}
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+
+
+
+
+
+
+
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  {% endblock %}

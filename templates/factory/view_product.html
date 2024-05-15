@@ -1,0 +1,92 @@
+
+{% extends 'factory/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+<br>
+
+<br><br><br><br>
+
+<center><h2 style="align:center">List of Added Product </h2></center>
+
+
+<div class="container" style=" ;
+
+padding: 20px;width: 1200px; height: 800px;  ">
+
+           
+  
+ <table class="table table-bordered table-striped table-hover" style="width: 1100px; "  text-align="center">
+
+
+<th class="info" style="background-color: #00001a; color:white;">Poduct Name</th>&nbsp
+<th class="info" style="background-color: #00001a; color:white;">Price</th>&nbsp
+<th class="info" style="background-color: #00001a; color:white;">Quantity</th>&nbsp
+
+<th class="info" style="background-color: #00001a; color:white;">Description</th>&nbsp
+<th class="info" style="background-color: #00001a; color:white;">Image</th>&nbsp
+<th class="info" style="background-color: #00001a; color:white;">Availability</th>&nbsp
+
+
+<th class="info" style="background-color: #00001a; color:white; ">Delete</th>&nbsp
+<th class="info" style="background-color: #00001a; color:white; ">Update Availability</th>&nbsp
+
+
+{% for dri in sh  %}
+
+<tr>
+  <td style="color: black;"><b>{{ dri.name}}</td>
+  {% comment %} <td>{{ dri.contractor.user.first_name}}</td> {% endcomment %}
+  <td style="color: black;"><b>{{ dri.price}}</td>
+  <td style="color: black;"><b>{{ dri.total_quantity}}</td>
+  <td style="color: black;"><b>{{ dri.description}}</td>
+    <td><img style="max-width: 200px;max-height:140px;" src="{{ dri.image.url }}"></td>
+    <td style="color: black;"><b>{{ dri.availability}}</td>
+
+  {% comment %} <td><img style="max-width:200px;max-height:140px;" src="/media/{{ dri.image}}"></td> {% endcomment %}
+  <td><a href="product_reject?id={{ dri.id}}" class=" btn btn-success " style="background-color:  #cc0000; color:white;">Delete</a></td>
+
+  <td>  <form action="Addavailability" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row g-3">
+        <div class="col-12">
+          <select type="text" name="track" class="form-control" placeholder="category">
+            {% comment %} <option value="Order Confirm">Order Confirm</option> {% endcomment %}
+            <option value="Available">Available</option>
+            {% comment %} <option value="Only few left">Only few left</option> {% endcomment %}
+            <option value="Out Of Stock">Out Of Stock</option>
+            {% comment %} <option value="Order Delivered">Order Delivered</option> {% endcomment %}
+        </select>
+
+       
+        <input type="hidden" name="id" value={{dri.id}}>
+    </div>
+   
+    <div class="col-12">
+      <br>
+            <button  type="submit" style="width=1px; background-color:#004d00; color:white;">Update</button>
+        
+      
+    </div>
+</form>
+</td>
+  {% comment %} <td ><a href="ViewW?id={{ dri.id}}" class=" btn btn-danger" style="background-color:#006600; color:white;">View</a></td> {% endcomment %}
+  
+{% endfor %}
+</table>
+
+</div>
+
+<br><br><br><br><br> <br><br><br><br><br>
+  <br><br><br><br><br>
+  {% endblock %}

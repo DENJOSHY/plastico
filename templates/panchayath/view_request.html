@@ -1,0 +1,77 @@
+
+{% extends 'panchayath/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+<br>
+
+<br><br><br><br><br><br><br>
+
+
+
+<center><h2 style="align:center">List of Added Waste</h2></center>
+
+
+<div class="container" style=" ;
+
+padding: 30px;width:900px; background-image: url({% static 'img/webp/r21.jpg' %});">
+
+           
+  
+ <table class="table table-bordered table-striped table-hover" style="width: 800px">
+  
+
+<th class="info" style="background-color: gray;">Factory Name</th>&nbsp;
+<th class="info" style="background-color: gray;">Rate</th>&nbsp;
+<th class="info" style="background-color: gray;"  >Approve</th>&nbsp;
+<th class="info" style="background-color: gray;"  >Reject</th>&nbsp;
+
+
+
+{% for dri in p  %}
+
+<tr>
+  {% comment %} <td style="color:black"><b>{{ dri.reg.user.first_name}}</b></td>
+  <td style="color:black"><b>{{ dri.location}}</b></td>
+  <td style="color:black"><b>{{ dri.reg.address}}</b></td>
+  <td style="color:black"><b>{{ dri.reg.mobile}}</b></td> {% endcomment %}
+  <td style="color:black"><b>{{ dri.factory.user.first_name}}</b></td>
+  <td style="color:black"><b>{{ dri.rate}}</b></td>
+
+  {% comment %} <td style="color:blblack"><b>{{ dri.status}}</b></td> {% endcomment %}
+  {% comment %} <td>{{ dri.address}}</td> {% endcomment %}
+  {% comment %} <td><img style="max-width:200px;max-height:140px;" src="/media/{{ dri.image}}"></td> {% endcomment %}
+
+  {% comment %} <td><a href="s_approve?id={{ dri.user_id}}" class=" btn btn-danger" style="background-color: lightgreen;">Approve</a></td> {% endcomment %}
+  <td><a href="ApproveR?id={{ dri.id}}" ><center><i class="fa fa-check" height="50px" weight="100px"></a></td>
+  <td><a href="RejectR?id={{ dri.id}}" ><center><i class="fa fa-trash" height="50px" weight="100px"></a></td>
+
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+
+
+
+
+
+
+
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  {% endblock %}

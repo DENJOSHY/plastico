@@ -1,0 +1,116 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+<br>
+
+<br><br><br>
+<div class="w-100 overflow-hidden bg-gray-100" id="top">
+
+  <div class="container position-relative">
+    <div class="col-12 col-lg-7 mt-0 h-100 position-absolute top-0 end-0 bg-cover" data-aos="fade-left"
+      style="background-image: url({% static 'img/webp/interior11.webp' %});">
+
+    </div>
+    <div class="row">
+
+      <div class="col-lg-7 py-vh-6 position-relative" data-aos="fade-right">
+       
+        <div class="col-12 col-lg-8 text-center">
+          <h1 style="align:center">Panchayath Registeration</h1>
+<br>
+          <div class="row">
+            <div class="grouped-inputs border bg-light p-2">
+              <div class="row">
+                <div class="col">
+                  <br>
+                  <form  action="p_reg" method="post">
+                      {% csrf_token %}
+                      <input type="text"  name="pname" class="form-control p-3"  placeholder="Panchayath Name" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"  required>
+                    <br>
+                    
+                    <input type="email" name="email" class="form-control p-3" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$"  required>
+                
+                    <br>
+                    <input type="tel" name="mobile" class="form-control p-3"  placeholder="Phone" pattern="[6-9]{1}[0-9]{5}[0-9]{4}" title="Enter 10 digit number"  required>
+                
+                    <br>
+                    <input type="text" class="form-control w-100" name="address"  placeholder = 'Panchayath Location' required ></input><br>
+      
+                    <input type="password" class="form-control p-3" name="password" placeholder="Password" pattern=".{8,}" title="Eight or more characters" required>       
+      
+      <br>         <div class="form-group">    
+                      <input type="submit" value="Registration" class="btn btn-primary">
+                  </div>
+      
+                  </form>
+                </div>
+               
+              </div>
+            </div>
+      
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+</div>
+
+{% comment %} <div class="container">
+
+<div class="col-12 col-lg-8 text-center">
+    <div class="row">
+      <div class="grouped-inputs border bg-light p-2">
+        <div class="row">
+          <div class="col">
+            <h1 style="align:center">Panchayath Registeration</h1>
+            <form  action="p_reg" method="post">
+                {% csrf_token %}
+                <input type="text"  name="pname" class="form-control p-3"  placeholder="Panchayath Name" required>
+              <br>
+              
+              <input type="email" name="email" class="form-control p-3" placeholder="email" required>
+          
+              <br>
+              <input type="tel" name="mobile" class="form-control p-3"  placeholder="Phone" required>
+          
+              <br>
+              <textarea class="form-control w-100" name="address"  cols="30" rows="3"  placeholder = ' Address' required ></textarea><br>
+
+              <input type="password" class="form-control p-3" name="password" placeholder="Password" required>       
+
+<br>         <div class="form-group">    
+                <input type="submit" value="Registration" class="btn btn-primary">
+            </div>
+
+            </form>
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> {% endcomment %}
+
+  <br><br><br><br><br>
+  {% endblock %}

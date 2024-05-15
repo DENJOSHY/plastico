@@ -1,0 +1,140 @@
+
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+{% if message %}
+<script>
+alert("{{ message }}")
+</script>
+{% endif %}
+
+
+<br>
+
+<br><br><br>
+
+
+
+
+
+<div class="bg-light w-100 overflow-hidden" id="testimonials">
+    <div class="container py-vh-6">
+      <div class="row d-flex justify-content-center">
+ 
+
+  <center><h2 style="align:center">List of Added Waste By Panchayath</h2></center>
+
+
+  <div class="container add-emp">
+  
+             
+    <table class="table table-bordered table-hover"  width="1150px">
+        <thead height="30px" style="background-color:#00001a; color:white;">
+            <tr>	
+<th class="info" >Panchayath Name</th>&nbsp
+
+  <th class="info" >Type of waste</th>&nbsp
+  <th class="info" >Weight</th>&nbsp
+  <th class="info" >Description</th>&nbsp
+  <th class="info" >Status</th>&nbsp
+
+
+  
+            </tr>
+        </thead>
+  {% for dri in p1  %}
+  
+  <tr>
+    <td>{{ dri.panchayath.user.first_name}}</td>
+
+    <td style="color:black"><b>{{ dri.type}}</b></td>
+    <td style="color:black"><b>{{ dri.kilo}}</b></td>
+    <td style="color:black"><b>{{ dri.des}}</b></td>
+    <td style="color:black"><b>{{ dri.status}}</b></td>
+
+
+  
+    {% comment %} <td>{{ dri.address}}</td> {% endcomment %}
+    {% comment %} <td><img style="max-width:200px;max-height:140px;" src="/media/{{ dri.image}}"></td> {% endcomment %}
+  
+    {% comment %} <td><a href="s_approve?id={{ dri.user_id}}" class=" btn btn-danger" style="background-color: lightgreen;">Approve</a></td> {% endcomment %}
+    {% comment %} <td><a href="s_reject?id={{ dri.user_id}}" class=" btn btn-success " style="background-color: pink;">Reject</a></td> {% endcomment %}
+    
+  
+  </tr>
+  
+  {% endfor %}
+  
+  </table>
+  
+  </div>
+  
+
+      </div>
+    </div>
+  </div>
+
+
+
+  
+  <br><br><br><br><br>  
+
+
+
+
+  <center><h2 style="align:center">List of Added Waste By User</h2></center>
+
+
+  <div class="container add-emp">
+  
+             
+    <table class="table table-bordered table-hover"  width="1150px">
+        <thead height="30px" style="background-color:#00001a; color:white;">
+            <tr>	
+<th class="info" >Name</th>&nbsp
+<th class="info" >Panchayath</th>&nbsp
+
+
+  <th class="info" >Type of waste</th>&nbsp
+  <th class="info" >Weight</th>&nbsp
+  <th class="info" >Status</th>&nbsp
+  
+            </tr>
+        </thead>
+  {% for dri in p  %}
+  
+  <tr>
+    <td>{{ dri.reg.user.first_name}}</td>
+    <td>{{ dri.panchayath.user.first_name}}</td>
+
+    <td style="color:black"><b>{{ dri.type}}</b></td>
+    <td style="color:black"><b>{{ dri.kilo}}</b></td>
+  
+    <td style="color:blblack"><b>{{ dri.status}}</b></td>
+    {% comment %} <td>{{ dri.address}}</td> {% endcomment %}
+    {% comment %} <td><img style="max-width:200px;max-height:140px;" src="/media/{{ dri.image}}"></td> {% endcomment %}
+  
+    {% comment %} <td><a href="s_approve?id={{ dri.user_id}}" class=" btn btn-danger" style="background-color: lightgreen;">Approve</a></td> {% endcomment %}
+    {% comment %} <td><a href="s_reject?id={{ dri.user_id}}" class=" btn btn-success " style="background-color: pink;">Reject</a></td> {% endcomment %}
+    
+  
+  </tr>
+  
+  {% endfor %}
+  
+  </table>
+  
+  </div>
+  
+  
+  
+
+
+
+
+
+  {% endblock %}
